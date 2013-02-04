@@ -1,5 +1,5 @@
-def checkParams(params):
-	if len(params) != 4:
+def checkParams(params, count):
+	if len(params) != count:
 		return False;
 	return True
 
@@ -28,7 +28,7 @@ def csvOutput(result, fileName):
 	f = open(fileName, 'w')
 	for row in result:
 		for column in row:
-			f.write(column + '|')
+			f.write(column.replace('\n',' ') + '|')
 		f.write('\n')
 
 def htmlOutput(result, fileName):

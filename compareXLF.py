@@ -28,7 +28,7 @@ def processXLF(root, desiredTag, targetDict):
 
 if __name__ == "__main__":
 
-	ok = checkParams(sys.argv)
+	ok = checkParams(sys.argv, 4)
 	if not ok:
 		sys.exit('Usage:\n' + sys.argv[0] + ' original_file corrected_file output.[csv|xlsx|html]')
 
