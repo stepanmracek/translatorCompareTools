@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
 	ok = checkParams(sys.argv, 4)
 	if not ok:
-		sys.exit('Usage:\n' + sys.argv[0] + ' original_file corrected_file output.[csv|xlsx|html]')
+		sys.exit('Usage:\n' + sys.argv[0] + ' source_file corrected_file output.[csv|xlsx|html]')
 
 	originalTree = ET.parse(sys.argv[1])
 	originalRoot = originalTree.getroot()
@@ -45,11 +45,11 @@ if __name__ == "__main__":
 
 	ok = processXLF(originalRoot, "source", englishDict)
 	if not ok:
-		sys.exit("Problem occured when parsing source language in original file.")
+		sys.exit("Problem occured when parsing source language in source file.")
 
 	ok = processXLF(originalRoot, "target", originalDict)
 	if not ok:
-		sys.exit("Problem occured when parsing target language in original file.")
+		sys.exit("Problem occured when parsing target language in source file.")
 
 	ok = processXLF(correctedRoot, "target", correctedDict)
 	if not ok:

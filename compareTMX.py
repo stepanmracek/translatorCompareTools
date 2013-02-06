@@ -24,7 +24,7 @@ def getDictFromTMX(xmlRootNode, language):
 					text = getText(tuv)
 					result[tuid] = text
 	except Exception:
-		sys.exit("Problem occured when parsing source language in original file.")
+		sys.exit("Problem occured when parsing source language in source file.")
 
 	return result
 
@@ -41,7 +41,7 @@ def getNotesFromTMX(xmlRootNode):
 				result[tuid] = noteText
 
 	except Exception:
-		sys.exit("Problem occured when parsing source language in original file.")
+		sys.exit("Problem occured when parsing source language in source file.")
 
 	return result
 
@@ -49,7 +49,7 @@ def getNotesFromTMX(xmlRootNode):
 if __name__ == "__main__":
 	ok = checkParams(sys.argv,6)
 	if not ok:
-		sys.exit('Usage:\n' + sys.argv[0] + ' source_language target_language original_file corrected_file output.[csv|xlsx|html]')
+		sys.exit('Usage:\n' + sys.argv[0] + ' source_language target_language source_file corrected_file output.[csv|xlsx|html]')
 
 	sourceLanguage = sys.argv[1]
 	targetLanguage = sys.argv[2]

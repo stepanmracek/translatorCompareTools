@@ -34,7 +34,7 @@ def csvOutput(result, fileName):
 def htmlOutput(result, fileName):
 	f = open(fileName, 'w')
 	f.write("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\"></head>")
-	f.write("<body><table border = \"1\"><tr><th>Key</th><th>Original</th><th>Translated</th><th>Corrected</th><th>Note</th></tr>")
+	f.write("<body><table border = \"1\"><tr><th>Key</th><th>Source</th><th>Translated</th><th>Corrected</th><th>Note</th></tr>")
 	for row in result:
 		f.write("<tr>")
 		for column in row:
@@ -57,7 +57,7 @@ def excelOutput(result, fileName):
 	cellKey.value = "Key"
 	cellKey.style.font.bold = True
 	cellOriginal = ws.cell(row = 0, column = 1)
-	cellOriginal.value = "Original"
+	cellOriginal.value = "Source"
 	cellOriginal.style.font.bold = True
 	cellTranslated = ws.cell(row = 0, column = 2)
 	cellTranslated.value = "Translated"
