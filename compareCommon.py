@@ -16,7 +16,8 @@ def checkDictKeys(dicts):
 
 def compare(englishDict, originalDict, correctedDict, notesDict):
 	result = []
-	for k in originalDict:
+	keys = sorted(originalDict.keys())
+	for k in keys:
 		if (correctedDict[k] != originalDict[k]) or (k in notesDict):
 			note = ''
 			if (k in notesDict):
