@@ -14,15 +14,39 @@ def checkDictKeys(dicts):
 
 	return True
 
+def isInt(val):
+	try:
+		int(val)
+		return True
+	except ValueError:
+		return False
+
+def createKeysDict(keys):
+	allKeysOK = True
+	for k in keys:
+		if not '-' in k:
+			allKeysOK = False
+			break
+		if not isInt(k[k.rfind('-'):]):
+			allKeysOK = False
+			break
+
+	if not allKeysOK:
+		return dict(zip(keys,keys))
+
+	newKeys = [s[:s.rfind('-')+1] + '{:05}'.format(int(s[s.rfind('-')+1:])) for s in keys]
+	return dict(zip(newKeys, keys))
+
 def compare(englishDict, originalDict, correctedDict, notesDict):
 	result = []
-	keys = sorted(originalDict.keys())
-	for k in keys:
-		if (correctedDict[k] != originalDict[k]) or (k in notesDict):
+	keysDict = createKeysDict(originalDict.keys())
+	for k in sorted(keysDict.keys()):
+		key = keysDict[k]
+		if (correctedDict[key] != originalDict[key]) or (key in notesDict):
 			note = ''
-			if (k in notesDict):
-				note = notesDict[k];
-			result.append([k, englishDict[k], originalDict[k], correctedDict[k], note])
+			if (key in notesDict):
+				note = notesDict[key];
+			result.append([key, englishDict[key], originalDict[key], correctedDict[key], note])
 	return result
 
 def csvOutput(result, fileName):
